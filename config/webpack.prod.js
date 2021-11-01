@@ -31,6 +31,7 @@ var plugins = [
 ]
 
 module.exports = merge(common, {
+  mode: 'production',
   optimization: {
     emitOnErrors: true, //  在编译时每当有错误时，就会 emit asset
     // 分离chunks
@@ -104,7 +105,7 @@ module.exports = merge(common, {
     ],
   },
   plugins: plugins,
-  mode: 'production',
+  
   output: {
     filename: 'js/[name].[contenthash].js',
     path: path.resolve(__dirname, '../dist'),

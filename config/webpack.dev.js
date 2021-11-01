@@ -1,29 +1,25 @@
 const { merge } = require('webpack-merge')
 const common = require('./webpack.base.js')
 const path = require('path')
-// const open = require('opn') // 打开浏览器
 const chalk = require('chalk') // 改变命令行中输出日志颜色插件
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 const axios = require('axios') ;
 
-// axios.get('https://www-static.qbox.me/_next/data/T45SD_4A-MGZbKsJXsZOC/index.json').then(res => {
-//   console.log('\n\n\n======json======\n',res.data, '====\n\n\n');
-// })
 
-console.log('==================');
+const PORT = 8089
 module.exports = merge(common, {
+  mode: 'development',
   devtool: 'inline-source-map',
   cache: {
     type: 'filesystem',
   },
   devServer: {
-    // port: 8080,
-    // contentBase: '../dist',
+    port: PORT,
+    hot: true,
     host: '0.0.0.0',
-    // overlay: true,
-    // stats: 'errors-only',
     compress: true, // 为每个静态文件开启 gzip compression
+    // open: true,
     // after() {
     //   open(`http://localhost:${this.port}`)
     //     .then(() => {
@@ -33,11 +29,11 @@ module.exports = merge(common, {
     //     })
     //     .catch((err) => {
     //       console.log(chalk.red(err))
-    //     })
+    // //     })
     // },
-    historyApiFallback: {
-      rewrites: [{ from: /./, to: '/index.html' }],
-    },
+    // historyApiFallback: {
+    //   rewrites: [{ from: /./, to: '/index.html' }],
+    // },
   },
   output: {
     filename: 'js/[name].[hash].js',
@@ -68,5 +64,5 @@ module.exports = merge(common, {
     ],
   },
   plugins: [new FriendlyErrorsWebpackPlugin()],
-  mode: 'development',
+  
 })

@@ -1,7 +1,7 @@
 
 const webpack = require('webpack')
 const path = require('path')
-const { VueLoaderPlugin } = require('vue-loader')
+const { VueLoaderPlugin } = require('vue-loader/dist/index')
 // html插件
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { resolve } = require('path')
@@ -9,11 +9,14 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const dayjs = require('dayjs')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const { ModuleFederationPlugin } = require('webpack').container
-const I18nSpider = require('./I18nSpider')
+// const I18nSpider = require('./I18nSpider')
 
 
 // 依赖
 const deps = require('../package.json').dependencies
+
+const PORT = 8089
+const TARGET = '$vlego'
 
 module.exports = {
   // entry: ['./src/index.js'],
@@ -27,6 +30,13 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
+        // options: {
+        //   compilerOptions: {
+        //     compatConfig: {
+        //       MODE: 2
+        //     }
+        //   }
+        // }
       },
       // 处理字体
       {
@@ -67,11 +77,7 @@ module.exports = {
   },
   plugins: [
     new webpack.BannerPlugin({
-      banner: JSON.stringify(dayjs().format('YYYY/DD/MM HH:mm:ss')),
-    }),
-    new I18nSpider({
-      // exclude: ['../node_module', '../dist'],
-      includes: [path.resolve(__dirname, '../src')]
+      banner: JSON.stringify(dayjs().format('YYYY/MM/DD HH:mm:ss')),
     }),
     // 请确保引入这个插件来施展魔法
     new VueLoaderPlugin(),
@@ -89,31 +95,34 @@ module.exports = {
     }),
     // 指定环境,定义环境变量，项目中暂时未用到
     new webpack.DefinePlugin({
-      'process.env': {
-        VUE_BASE_URL: JSON.stringify('http://localhost:8080'),
-        BUILD_TIME: JSON.stringify(dayjs().format('YYYY/DD/MM HH:mm:ss')),
-        __VUE_PROD_DEVTOOLS__: 'false',
-      },
+      // 'process.env': {
+      //   VUE_BASE_URL: JSON.stringify('http://localhost:8080'),
+      //   BUILD_TIME: JSON.stringify(dayjs().format('YYYY/DD/MM HH:mm:ss')),
+      //   __VUE_PROD_DEVTOOLS__: 'false',
+      // },
+      __VUE_OPTIONS_API__: false,
+      __VUE_PROD_DEVTOOLS__: false,
     }),
     // fork-ts-checker-webpack-plugin，顾名思义就是创建一个新进程，专门来运行Typescript类型检查。这么做的原因是为了利用多核资源来提升编译的速度
     new ForkTsCheckerWebpackPlugin(),
-    new ModuleFederationPlugin({
-      name: 'local',
-      filename: 'remoteEntry.js',
-      exposes: { './Helo': './src/components/Helo.vue' },
-      remotes: { remote: 'appA@http://127.0.0.1:8081/remoteEntry.js' },
-      shared: {
-        ...deps,
-        vue: {
-          eager: true,
-        },
-      },
-    }),
+    // new ModuleFederationPlugin({
+    //   name: 'vlego',
+    //   filename: 'remoteEntry.js',
+    //   exposes: { './Helo': './src/components/Helo.vue' },
+    //   remotes: { '$vlego': `vlego@http://127.0.0.1:${PORT}/remoteEntry.js` },
+    //   shared: {
+    //     ...deps,
+    //     vue: {
+    //       eager: true,
+    //     },
+    //   },
+    // }),
   ],
   resolve: {
     extensions: ['.js', '.vue', '.ts', '.tsx'],
     alias: {
       '@': resolve('src'),
+      // vue: '@vue/compat'
     },
   },
 }

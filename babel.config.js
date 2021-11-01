@@ -23,5 +23,6 @@ module.exports = {
     ],
     '@babel/proposal-class-properties',
     '@babel/proposal-object-rest-spread',
+    ["import", { "libraryName": "ant-design-vue", "libraryDirectory": "es", "style": "css" }]
   ],
 }

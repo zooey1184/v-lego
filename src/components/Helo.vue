@@ -1,6 +1,5 @@
 <template>
   <div>
-    this is Helo page
     {{val}}
     <input placeholder="请输入" v-model="val" />
   </div>
