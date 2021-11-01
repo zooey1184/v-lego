@@ -5,6 +5,13 @@ const path = require('path')
 const chalk = require('chalk') // 改变命令行中输出日志颜色插件
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
+const axios = require('axios') ;
+
+// axios.get('https://www-static.qbox.me/_next/data/T45SD_4A-MGZbKsJXsZOC/index.json').then(res => {
+//   console.log('\n\n\n======json======\n',res.data, '====\n\n\n');
+// })
+
+console.log('==================');
 module.exports = merge(common, {
   devtool: 'inline-source-map',
   cache: {

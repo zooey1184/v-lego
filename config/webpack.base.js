@@ -9,6 +9,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const dayjs = require('dayjs')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const { ModuleFederationPlugin } = require('webpack').container
+const I18nSpider = require('./I18nSpider')
+
 
 // 依赖
 const deps = require('../package.json').dependencies
@@ -66,6 +68,10 @@ module.exports = {
   plugins: [
     new webpack.BannerPlugin({
       banner: JSON.stringify(dayjs().format('YYYY/DD/MM HH:mm:ss')),
+    }),
+    new I18nSpider({
+      // exclude: ['../node_module', '../dist'],
+      includes: [path.resolve(__dirname, '../src')]
     }),
     // 请确保引入这个插件来施展魔法
     new VueLoaderPlugin(),
