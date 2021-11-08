@@ -1,21 +1,23 @@
 <template>
-  <div>
-    <a-button>
-      <slot></slot>
-    </a-button>
-  </div>
+  <a-row :gutter='gutter' class="border-box" v-bind='$props'>
+    <slot></slot>
+  </a-row>
 </template>
 
 <script>
-import {Button} from 'ant-design-vue'
-import {defineAsyncComponent} from 'vue'
-// const {Row} = defineAsyncComponent(() => import('ant-design-vue'))
+import {Row, Col} from 'ant-design-vue'
 
 export default {
+  name: 'ConditionWrap',
   components: {
-    'a-button': Button,
+    'a-row': Row,
+    'a-col': Col
   },
   props: {
+    gutter: {
+      type: Number,
+      default: 20
+    },
     md: {
       type: Number,
       default: 12

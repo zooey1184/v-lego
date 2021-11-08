@@ -1,0 +1,64 @@
+
+.ellipsis-multi(@line: 1; @width: 100%) when (@line > 1) {
+  .ellipsis-@{line} {
+    width: @width;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
+    -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+    -webkit-line-clamp: @line; /** 显示的行数 **/
+    overflow: hidden; /** 隐藏超出的内容 **/
+  }
+  .ellipsis-multi(@line - 1, @width: 100%)
+}
+
+
+@overflow: {
+  auto: auto;
+  scroll: scroll;
+  hidden: hidden
+}
+
+.overflowFn() {
+  each(@overflow, {
+    .overflow-@{key} {
+      overflow: @value;
+    }
+    .overflow-x-@{key} {
+      overflow-x:@value;
+    }
+    .overflow-y-@{key} {
+      overflow-y: @value;
+    }
+  })
+}
+
+body {
+  .overflowFn();
+  .ellipsis-multi(12);
+  .ellipsis-1 {
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  ::-webkit-scrollbar {
+    background: #f0f0f086;
+    height: 5px;
+    width: 5px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(104, 104, 104);
+    border-radius: 40px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f0f0f086;
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+.cursor-disabled {
+  cursor: not-allowed;
+}

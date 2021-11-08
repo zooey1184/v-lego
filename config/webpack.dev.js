@@ -20,20 +20,6 @@ module.exports = merge(common, {
     host: '0.0.0.0',
     compress: true, // 为每个静态文件开启 gzip compression
     // open: true,
-    // after() {
-    //   open(`http://localhost:${this.port}`)
-    //     .then(() => {
-    //       console.log(
-    //         chalk.cyan(`成功打开链接： http://localhost:${this.port}`)
-    //       )
-    //     })
-    //     .catch((err) => {
-    //       console.log(chalk.red(err))
-    // //     })
-    // },
-    // historyApiFallback: {
-    //   rewrites: [{ from: /./, to: '/index.html' }],
-    // },
   },
   output: {
     filename: 'js/[name].[hash].js',

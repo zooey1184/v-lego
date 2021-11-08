@@ -1,7 +1,7 @@
 
 const webpack = require('webpack')
 const path = require('path')
-const { VueLoaderPlugin } = require('vue-loader/dist/index')
+const { VueLoaderPlugin } = require('vue-loader')
 // html插件
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { resolve } = require('path')
@@ -30,13 +30,13 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        // options: {
-        //   compilerOptions: {
-        //     compatConfig: {
-        //       MODE: 2
-        //     }
-        //   }
-        // }
+        options: {
+          compilerOptions: {
+            compatConfig: {
+              MODE: 3
+            }
+          }
+        }
       },
       // 处理字体
       {
@@ -100,8 +100,8 @@ module.exports = {
       //   BUILD_TIME: JSON.stringify(dayjs().format('YYYY/DD/MM HH:mm:ss')),
       //   __VUE_PROD_DEVTOOLS__: 'false',
       // },
-      __VUE_OPTIONS_API__: false,
-      __VUE_PROD_DEVTOOLS__: false,
+      // __VUE_OPTIONS_API__: false,
+      // __VUE_PROD_DEVTOOLS__: false,
     }),
     // fork-ts-checker-webpack-plugin，顾名思义就是创建一个新进程，专门来运行Typescript类型检查。这么做的原因是为了利用多核资源来提升编译的速度
     new ForkTsCheckerWebpackPlugin(),
