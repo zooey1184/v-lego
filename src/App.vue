@@ -43,10 +43,13 @@
 
     <div class="p-16">
       <div style="font-size: 18px; font-weight: 600">省略ellipsis</div>
-      <div style="width: 200px; display: inline-block">
-        <Ellipsis tip='dfsdfsdfsfsffsf' :line='1'>fdsfsdfsfsdfsdfsdfsdsfsdfsfsdfsdfsdfssfsdfsfsdfsdfdfsdfsdsfsdfsfsdfsdfsdfssfsdfsfsdfsdfdfsdfsdsfsdfsfsdfsdfsdfssfsdfsfsdfsdfsdfs</Ellipsis>
+      <div style="width: 210px; display: inline-block">
+        <Ellipsis :line='2'>
+          这里发现了一个很有意思的事情当文字是中文时上面的代码是可以实现环绕效果的，结果如这里发现了一个很有意思的事情，当文字是中文时，上面的代码是可以实现环绕效果的，结果如这里发现了一个很有意思的事情，当文字是中文时，上面的代码是可以实现环绕效果的，结果如
+        </Ellipsis>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -119,3 +122,20 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="less" scoped>
+.wrap {
+  width: 200px;
+&::before {
+    content: "";
+    float: right;
+    width: 0;
+    height: calc(100% - 20px);
+  }
+}
+.a {
+  float: right;
+  clear: both;
+  background: rosybrown;
+}
+</style>
