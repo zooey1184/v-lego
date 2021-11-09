@@ -1,43 +1,74 @@
 <script setup>
-import { defineProps } from "vue";
-
+import { defineProps, ref, defineEmits, onMounted, computed } from "vue";
 // @ts-ignore
 const props = defineProps({
   line: Number,
   tip: String,
   showMore: Boolean,
+  text: String,
+  value: {
+    type: Boolean,
+    default: true
+  },
+  more: {
+    type: String,
+    default: "更多",
+  },
+  ellipsisHeight: [String, Number],
+  expandHeight: [String, Number]
 });
+
+const emit = defineEmits(['update:value'])
+const ellipsis = ref(props.value)
+const handleChange = () => {
+  ellipsis.value = !ellipsis.value
+  emit('update:value', ellipsis.value)
+}
+
+const ellipsisPane = ref(null)
+const ellipsisExtra = ref(null)
+const beforeH = ref(0)
+const afterH = ref(0)
+onMounted(() => {
+  if (!beforeH.value) {
+    // @ts-ignore
+    const rect = ellipsisPane?.value?.getBoundingClientRect()
+    if (rect?.height) {
+      // @ts-ignore
+      beforeH.value = rect.height
+    }
+  }
+
+  if (!afterH.value) {
+    // @ts-ignore
+    const arect = ellipsisExtra?.value?.getBoundingClientRect()
+    if (arect?.height) {
+      afterH.value = arect.height
+    }
+  }
+})
+
+
+defineExpose({
+  handleChange
+})
 </script>
 
 <template>
-  <div>
-    <a-tooltip v-if="props.tip">
-      <template #title>{{ props.tip }}</template>
+  <div class="pos-r">
+    <a-tooltip>
+      <template v-if="tip" #title>{{ tip }}</template>
       <div class="flex">
-        <div
-          style="width: 200px"
-          class="wrap"
-          :class="{ [`ellipsis-${props.line}`]: true }"
-        >
-          <span v-if="showMore" style="float: right; clear: both" class="pr-8"
-            >确定</span
-          >
-          <slot></slot>
+        <div class="wrap" ref='ellipsisPane' :style="{height: ellipsis ?( beforeH ? `${beforeH}px` : undefined) : (afterH ? `${afterH}px` : undefined)}" :class="{ [`ellipsis-${line}`]: ellipsis }">
+          <span v-if="showMore" class="float-r pr-8 clear-both" @click='handleChange'>
+            <slot name="more">{{ more }}</slot>
+          </span>
+          <slot name='text'>{{text}}</slot>
         </div>
       </div>
     </a-tooltip>
-
-    <div class="flex" v-else>
-      <div
-        style="width: 200px"
-        class="wrap"
-        :class="{ [`ellipsis-${props.line}`]: true }"
-      >
-        <span v-if="showMore" style="float: right; clear: both" class="pr-8"
-          >确定</span
-        >
-        <slot></slot>
-      </div>
+    <div v-if='text && !afterH' ref='ellipsisExtra' class="pos-a" style="visibility: hidden;">
+      {{text}}
     </div>
   </div>
 </template>
@@ -49,7 +80,12 @@ const props = defineProps({
 .float-l {
   float: left;
 }
+.clear-both {
+  clear: both;
+}
 .wrap {
+  transition: all 250ms linear;
+  transform: translateZ(10px);
   &::before {
     content: "";
     float: right;

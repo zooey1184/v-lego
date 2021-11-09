@@ -73,7 +73,6 @@ export default {
       let d_lg = this.lg || lg || md || span || xl || xxl;
       let d_md = this.md || md || span || lg || xl || xxl;
       let d_span = this.span || span;
-      console.log(d_span);
       return {
         ...this.$props,
         xl: this.span ?? d_xl,

@@ -43,13 +43,19 @@
 
     <div class="p-16">
       <div style="font-size: 18px; font-weight: 600">省略ellipsis</div>
-      <div style="width: 210px; display: inline-block">
-        <Ellipsis :line='2'>
-          这里发现了一个很有意思的事情当文字是中文时上面的代码是可以实现环绕效果的，结果如这里发现了一个很有意思的事情，当文字是中文时，上面的代码是可以实现环绕效果的，结果如这里发现了一个很有意思的事情，当文字是中文时，上面的代码是可以实现环绕效果的，结果如
+      <div style="width: 300px; display: inline-block">
+        <Ellipsis v-model='ellipsisVal' :line='2' showMore text='这里发现了一个很有意思的事情当文字是中文时上面的代码是可以实现环绕效果的，结果如这里发现了一个很有意思的事情，当文字是中文时，上面的代码是可以实现环绕效果的，结果如这里发现了一个很有意思的事情，当文字是中文时，上面的代码是可以实现环绕效果的'>
+          
+          <!-- <template #text>
+            这里发现了一个很有意思的事情当文字是中文时上面的代码是可以实现环绕效果的，实现环绕效果发现了一个很有意思的事情，当文字是中文时，上面的代码是可以实现环绕效果的，结果如这里发现了一个很有意思的事情，当文字是中文时，上面的代码是可以实现环绕效果的
+          </template> -->
         </Ellipsis>
       </div>
     </div>
 
+    <div>
+      helo world
+    </div>
   </div>
 </template>
 
@@ -72,11 +78,9 @@ export default defineComponent({
     const value = ref<string>("");
     const visible = ref(false);
     const handleOk = () => {
-      console.log("helo world");
-
+      
       visible.value = true;
     };
-    console.log(Condition);
 
     const keyword = ref("");
     const treeData = ref([
@@ -110,6 +114,8 @@ export default defineComponent({
     const handleSelect = (e: any, node: any) => {
       console.log('handleSelect', e, node)
     }
+
+    const ellipsisVal = ref(true)
     return {
       value,
       visible,
@@ -117,7 +123,8 @@ export default defineComponent({
       treeData,
       keyword,
       selected_Keys,
-      handleSelect
+      handleSelect,
+      ellipsisVal
     };
   },
 });
