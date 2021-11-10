@@ -20,9 +20,7 @@ const TARGET = '$vlego'
 
 module.exports = {
   // entry: ['./src/index.js'],
-  entry: {
-    local: './src/index.js'
-  },
+  
   target: 'web',
   module: {
     rules: [

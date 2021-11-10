@@ -44,17 +44,19 @@
     <div class="p-16">
       <div style="font-size: 18px; font-weight: 600">省略ellipsis</div>
       <div style="width: 300px; display: inline-block">
-        <Ellipsis v-model='ellipsisVal' :line='2' showMore text='这里发现了一个很有意思的事情当文字是中文时上面的代码是可以实现环绕效果的，结果如这里发现了一个很有意思的事情，当文字是中文时，上面的代码是可以实现环绕效果的，结果如这里发现了一个很有意思的事情，当文字是中文时，上面的代码是可以实现环绕效果的'>
-          
-          <!-- <template #text>
+        <Ellipsis v-model='ellipsisVal' :line='3' expandble expandHeight='200px'>
+          <template #text>
             这里发现了一个很有意思的事情当文字是中文时上面的代码是可以实现环绕效果的，实现环绕效果发现了一个很有意思的事情，当文字是中文时，上面的代码是可以实现环绕效果的，结果如这里发现了一个很有意思的事情，当文字是中文时，上面的代码是可以实现环绕效果的
-          </template> -->
+          </template>
         </Ellipsis>
       </div>
     </div>
 
-    <div>
-      helo world
+    <div class="p-16">
+      <div style="font-size: 18px; font-weight: 600">脱敏组件SecretText</div>
+      <div>
+        <SecretText text='12333331212' :start='3'></SecretText>
+      </div>
     </div>
   </div>
 </template>
@@ -65,6 +67,7 @@ import Condition from "@/components/ConditionPane";
 import Tree from "@/components/TreePane";
 import HighLight from "@/components/HighLight";
 import Ellipsis from '@/components/Ellipsis'
+import SecretText from '@/components/SecretText'
 
 export default defineComponent({
   components: {
@@ -72,7 +75,8 @@ export default defineComponent({
     "c-item": Condition.Item,
     Tree,
     HighLight,
-    Ellipsis
+    Ellipsis,
+    SecretText
   },
   setup() {
     const value = ref<string>("");

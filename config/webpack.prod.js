@@ -31,6 +31,9 @@ var plugins = [
 ]
 
 module.exports = merge(common, {
+  entry: {
+    main: './src/components/index.ts'
+  },
   mode: 'production',
   optimization: {
     emitOnErrors: true, //  在编译时每当有错误时，就会 emit asset

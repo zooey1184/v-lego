@@ -39,7 +39,6 @@
 import { defineComponent, ref, watch } from "vue";
 import { Input, Tree } from "ant-design-vue";
 import HighlightSearch from "../HighLight";
-import { log } from "console";
 
 interface ICheckMatch {
   attr: string[];

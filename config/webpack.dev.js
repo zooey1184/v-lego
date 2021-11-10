@@ -9,6 +9,9 @@ const axios = require('axios') ;
 
 const PORT = 8089
 module.exports = merge(common, {
+  entry: {
+    local: './src/index.js'
+  },
   mode: 'development',
   devtool: 'inline-source-map',
   cache: {
