@@ -1,3 +1,3 @@
-import Ellipsis from './Ellipsis.ce.vue'
+import Ellipsis from './ellipsis.vue'
 
 export default Ellipsis

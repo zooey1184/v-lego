@@ -1,7 +1,7 @@
 
 import { defineCustomElement } from 'vue'
 import Condition from './ConditionPane'
-import Ellipsis from './Ellipsis'
+import Ellipsis from './Ellipsis/wc-ellipsis.ce.vue'
 // import HighLight from './HighLight'
 // import Secret from './SecretText'
 // import Tree from './TreePane'
@@ -23,6 +23,7 @@ export function register() {
   // customElements.define('g-secret', gSecret)
   // customElements.define('g-tree', gTree)
 }
+register()
 // export default {
 //   Condition,
 //   Ellipsis,

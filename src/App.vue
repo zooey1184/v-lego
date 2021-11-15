@@ -44,10 +44,8 @@
     <div class="p-16">
       <div style="font-size: 18px; font-weight: 600">省略ellipsis</div>
       <div style="width: 300px; display: inline-block">
-        <Ellipsis v-model='ellipsisVal' :line='3' expandble expandHeight='200px'>
-          <template #text>
-            这里发现了一个很有意思的事情当文字是中文时上面的代码是可以实现环绕效果的，实现环绕效果发现了一个很有意思的事情，当文字是中文时，上面的代码是可以实现环绕效果的，结果如这里发现了一个很有意思的事情，当文字是中文时，上面的代码是可以实现环绕效果的
-          </template>
+        <Ellipsis v-model='ellipsisVal' :line='1' text='这个是神这个是什么这个是神这个是什么这个是神这个是什么这个是神这个是什么个是什么这个是神这个是什么是神这个是什么这个是神这个是什么' expandText="zhankai" unexpandText="weizhankai" expandble tip='hhhh' expandHeight='200px'>
+          
         </Ellipsis>
       </div>
     </div>

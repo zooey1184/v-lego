@@ -28,13 +28,13 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        options: {
-          compilerOptions: {
-            compatConfig: {
-              MODE: 3
-            }
-          }
-        }
+        // options: {
+        //   compilerOptions: {
+        //     compatConfig: {
+        //       MODE: 3
+        //     }
+        //   }
+        // }
       },
       // 处理字体
       {

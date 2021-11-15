@@ -34,6 +34,7 @@ module.exports = merge(common, {
         test: /\.(sa|sc|c)ss$/,
         use: [
           'style-loader',
+          'vue-style-loader',
           'css-loader',
           'sass-loader',
         ],
@@ -42,7 +43,9 @@ module.exports = merge(common, {
         test: /\.less$/,
         use: [
           'style-loader',
+          'vue-style-loader',
           'css-loader',
+          'postcss-loader',
           'less-loader',
         ],
       },
