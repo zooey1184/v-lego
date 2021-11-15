@@ -1028,6 +1028,11 @@
   resolved "https://r.cnpmjs.org/@trysound/sax/download/@trysound/sax-0.2.0.tgz#cccaab758af56761eb7bf37af6f03f326dd798ad"
   integrity sha1-zMqrdYr1Z2Hre/N69vA/Mm3XmK0=
 
+"@types/clamp-js@^0.7.3":
+  version "0.7.3"
+  resolved "http://fe.skyunion.net:8081/@types%2fclamp-js/-/clamp-js-0.7.3.tgz#99070f4b75047198b7a7b25c603f9b958ad87a14"
+  integrity sha512-q2y5OBbe9/qquZCjccJPzEpqtun9shm+NBTOEw6JpCiow4vOMUiQZCo0UevrA8WBzpxTLzGvoiPG8ZhYQiKESA==
+
 "@types/eslint-scope@^3.7.0":
   version "3.7.1"
   resolved "https://r.cnpmjs.org/@types/eslint-scope/download/@types/eslint-scope-3.7.1.tgz#8dc390a7b4f9dd9f1284629efce982e41612116e"
@@ -1899,6 +1904,11 @@ chrome-trace-event@^1.0.2:
   version "1.0.3"
   resolved "https://r.cnpmjs.org/chrome-trace-event/download/chrome-trace-event-1.0.3.tgz#1015eced4741e15d06664a957dbbf50d041e26ac"
   integrity sha1-EBXs7UdB4V0GZkqVfbv1DQQeJqw=
+
+clamp-js@^0.7.0:
+  version "0.7.0"
+  resolved "http://fe.skyunion.net:8081/clamp-js/-/clamp-js-0.7.0.tgz#95c49e0e28323c8eeac8c63201dddf30dbd78fce"
+  integrity sha1-lcSeDigyPI7qyMYyAd3fMNvXj84=
 
 clean-css@^5.1.5:
   version "5.2.2"

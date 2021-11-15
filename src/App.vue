@@ -43,10 +43,17 @@
 
     <div class="p-16">
       <div style="font-size: 18px; font-weight: 600">省略ellipsis</div>
-      <div style="width: 300px; display: inline-block">
+      <!-- <div style="width: 300px; display: inline-block">
         <Ellipsis v-model='ellipsisVal' :line='1' text='这个是神这个是什么这个是神这个是什么这个是神这个是什么这个是神这个是什么个是什么这个是神这个是什么是神这个是什么这个是神这个是什么' expandText="zhankai" unexpandText="weizhankai" expandble tip='hhhh' expandHeight='200px'>
           
         </Ellipsis>
+      </div> -->
+
+      <div style="width: 200px">
+        <a-button @click='handleExpand'>expand toggle</a-button>
+        <EllipsisPane :useNativeClamp="true" :clamp='line' text='这个是神这个是什么这个是神这个是什么这个是神这个是什么这个是神这个是什么个是什么这个是神这个是什么是神这个是什么这个是神这个是什么'>
+          
+        </EllipsisPane>
       </div>
     </div>
 
@@ -55,6 +62,10 @@
       <div>
         <SecretText text='12333331212' :start='3'></SecretText>
       </div>
+    </div>
+
+    <div>
+      <gButton @gclick="handleTest">hhhh</gButton>
     </div>
   </div>
 </template>
@@ -66,6 +77,8 @@ import Tree from "@/components/TreePane";
 import HighLight from "@/components/HighLight";
 import Ellipsis from '@/components/Ellipsis'
 import SecretText from '@/components/SecretText'
+import EllipsisPane from '@/components/EllipsisPane'
+import gButton from '@/components/Button/button.ce.vue'
 
 export default defineComponent({
   components: {
@@ -74,7 +87,9 @@ export default defineComponent({
     Tree,
     HighLight,
     Ellipsis,
-    SecretText
+    SecretText,
+    EllipsisPane,
+    gButton
   },
   setup() {
     const value = ref<string>("");
@@ -118,6 +133,18 @@ export default defineComponent({
     }
 
     const ellipsisVal = ref(true)
+    const line = ref(1)
+    const handleExpand = () => {
+      if (line.value === 1) {
+        line.value = 5
+      } else {
+        line.value = 1
+      }
+    }
+
+    const handleTest = () => {
+      console.log('====')
+    }
     return {
       value,
       visible,
@@ -126,7 +153,10 @@ export default defineComponent({
       keyword,
       selected_Keys,
       handleSelect,
-      ellipsisVal
+      ellipsisVal,
+      line,
+      handleExpand,
+      handleTest
     };
   },
 });
