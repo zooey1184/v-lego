@@ -1,5 +1,5 @@
 <template>
-  <a-button :type='type' :danger='danger'>
+  <a-button v-bind='$props'>
     <slot></slot>
   </a-button>
 </template>
@@ -7,23 +7,18 @@
 <script>
 import {ref, defineComponent} from 'vue'
 import {Button} from 'ant-design-vue'
+import buttonProps from 'ant-design-vue/lib/button/buttonTypes'
 
 export default defineComponent({
   components: {
     'a-button': Button
   },
-  emits: ['gclick'],
   props: {
-    type: {
-      type: String,
-    },
-    danger: {
-      type: Boolean
-    },
     name: {
       type: String,
       default: ''
-    }
+    },
+    ...buttonProps
   },
 })
 </script>

@@ -112,6 +112,7 @@ module.exports = merge(common, {
   output: {
     filename: 'js/[name].[contenthash].js',
     path: path.resolve(__dirname, '../dist'),
+    library: "alita",
     environment: {
       arrowFunction: false,
       destructuring: false,

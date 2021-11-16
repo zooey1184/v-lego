@@ -29,7 +29,7 @@ export function register() {
   // customElements.define('g-secret', gSecret)
   // customElements.define('g-tree', gTree)
 }
-register()
+// register()
 // export default {
 //   Condition,
 //   Ellipsis,
