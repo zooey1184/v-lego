@@ -100,6 +100,8 @@ module.exports = {
       // },
       // __VUE_OPTIONS_API__: false,
       // __VUE_PROD_DEVTOOLS__: false,
+      __VUE_OPTIONS_API__: JSON.stringify(true),
+      __VUE_PROD_DEVTOOLS__: JSON.stringify(false)
     }),
     // fork-ts-checker-webpack-plugin，顾名思义就是创建一个新进程，专门来运行Typescript类型检查。这么做的原因是为了利用多核资源来提升编译的速度
     new ForkTsCheckerWebpackPlugin(),
